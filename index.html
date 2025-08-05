@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>JSX DOM RENDER</title>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<script type="text/babel"  data-type="module">
+
+     /** @jsx hs */
+    function hs(nodeName , attributes, ...args){
+        let children = args.length ? [].concat(...args) : null;
+        return {nodeName, attributes, children};
+    }
+
+    function render(vnode){
+        if(vnode.split) return document.createTextNode(vnode);
+
+        let n = document.createElement(vnode.nodeName);
+
+
+        let a = vnode.attributes || {};
+       // Object.keys(a).forEach( k => n.setAttribute(k, a[k]));
+
+       // adding an eventlistener "onClick" like React
+       Object.keys(a).forEach((k) => {
+                if (k.startsWith("on") && typeof a[k] === "function") {
+                    // It's an event handler like onClick
+                    const eventName = k.slice(2).toLowerCase();
+                    n.addEventListener(eventName, a[k]);
+                } else {
+                    n.setAttribute(k, a[k]);
+                }
+            });
+
+
+        (vnode.children || []).forEach(c => n.appendChild(render(c)));
+
+        return n;
+    }
+
+    let vdom = <div id="foo">Hello!</div>
+
+    //VIRTUAL_DOM => DOM
+    let dom = render(vdom)
+
+    //add the tree to <body>:
+    document.body.appendChild(dom)
+
+
+    //Array of strings we want to show in the list
+    let items = ['foo', 'bar','baz'];
+
+    // creates one list item given some text:
+    function item(text){
+        return <li>{text}</li>;
+
+    }
+
+    //a"view" with "iteration " and "a partial":
+    let list = render(
+        <ul>
+            {items.map(item)}
+        </ul>
+    )
+
+    function handleClick(){
+        alert("Clicked");
+    }
+    let button = render(
+        <button onClick = {handleClick}>
+            Click Me
+            </button>
+    )
+
+    document.body.appendChild(list);
+    document.body.appendChild(button)
+</script>
+</body>
+</html>
