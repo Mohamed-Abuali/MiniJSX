@@ -1,3 +1,5 @@
+import { type } from "os";
+
 /** @jsx hs */
 export function hs(nodeName, attributes, ...args) {
     let children = args.length ? [].concat(...args) : null;
@@ -28,6 +30,16 @@ export function render(vnode) {
     (vnode.children || []).forEach(c => n.appendChild(render(c)));
 
     return n;
+}
+
+function patch($domNode, oldVNode, newVNode) {
+    if (typeof oldVNode !== typeof newVNode || (typeof newVNode === "number" || typeof newVNode === "string" || newVNode === "boolean") && newVNode !== oldVNode) {
+
+        const $newNode = render(newVNode);
+        $domNode.replaceWith($newNode);
+        return $newNode;
+    }
+    
 }
 
 
