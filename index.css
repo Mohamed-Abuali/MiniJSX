@@ -1,4 +1,59 @@
+:root{
+    --bg-color: #0d0d0d;
+    --btn-color:#4e4e4e;
+}
+
 body {
-    background-color: #0d0d0d;
+    background-color: var(--bg-color);
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
     color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button{
+    width: 154px;
+    height: 42px;
+    background-color:var(--btn-color) ;
+    border:none;
+    color:var(--color);
+    border-radius:24px;
+    cursor: pointer;
+    transition-duration: 300ms;
+    transform-style: flat;
+    &:hover{
+        background-color: azure;
+        color: var(--bg-color);
+    }
+}
+.header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+ 
+}
+
+.header h1 {
+    font-size: 5rem;
+}
+.info-section{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    gap:10px;
+}
+.btn-wrapper{
+    display:flex;
+     justify-content: center;
+    align-items: center;
+    gap:10px
 }

@@ -1,40 +1,38 @@
 /** @jsx hs */
-export function hs(nodeName, attributes, ...args) {
-    let children = args.length ? [].concat(...args) : null;
-    return { nodeName, attributes, children };
-}
+import { element, hs } from "./index.js";
 
-export function render(vnode) {
-    if (vnode.split) return document.createTextNode(vnode);
-
-    let n = document.createElement(vnode.nodeName);
-
-
-    let a = vnode.attributes || {};
-    // Object.keys(a).forEach( k => n.setAttribute(k, a[k]));
-
-    // adding an eventlistener "onClick" like React
-    Object.keys(a).forEach((k) => {
-        if (k.startsWith("on") && typeof a[k] === "function") {
-            // It's an event handler like onClick
-            const eventName = k.slice(2).toLowerCase();
-            n.addEventListener(eventName, a[k]);
-        } else {
-            n.setAttribute(k, a[k]);
-        }
-    });
-
-
-    (vnode.children || []).forEach(c => n.appendChild(render(c)));
-
-    return n;
+function handleClick() {
+    alert("Clicked");
 }
 
 
-export function element(nodeName, attributes, ...args) {
-    let dom = render(hs(nodeName, attributes, ...args));
-    document.body.appendChild(dom);
 
-}
+element("div",
+    {
+        class: "header"
+    },
+    hs(
+        "h1",
+        null,
+        "Hello!"
+    ),
+    hs('h3',null,"Welcome to FeatherJSX"),
+)
+
+
+
+element("div",
+    {class:"info-section"},
+    hs('div',
+        {class:"btn-wrapper"},
+        hs('button', { onClick: handleClick }, 'Click Me'),
+        hs('button', null, 'Hello World'),
+        ),
+    hs('p', null, 'This is a paragraph'),
+  
+)
+
+
+
 
 
