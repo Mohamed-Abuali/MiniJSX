@@ -1,4 +1,3 @@
-import { type } from "os";
 
 /** @jsx hs */
 export function hs(nodeName, attributes, ...args) {
@@ -39,14 +38,18 @@ function patch($domNode, oldVNode, newVNode) {
         $domNode.replaceWith($newNode);
         return $newNode;
     }
-    
+
 }
 
 
 export function element(nodeName, attributes, ...args) {
     let dom = render(hs(nodeName, attributes, ...args));
     document.body.appendChild(dom);
-
+    vdom.vdom.push(dom);
+    console.log(vdom, document.body);
+    const newVdom = patch(dom, vdom.vdom, document.body);
+    vdom.vdom = newVdom;
 }
 
+let vdom = { vdom: [] };
 
