@@ -44,13 +44,14 @@ function patch($domNode, oldVNode, newVNode) {
 
 
 export function element(nodeName, attributes, ...args) {
-    let node = render(hs(nodeName, attributes, ...args));
+    let node = hs(nodeName, attributes, ...args);
+   // document.body.appendChild(node);
+    vdom.push(node);
+    console.log(vdom.find(node));
+    const newVNode = patch(document.body, vdom.vdom, node);
     document.body.appendChild(node);
-    // vdom.vdom.push(dom);
-    console.log(vdom, document.body);
-    const newVdom = patch(node, vdom.vdom, document.body);
-    vdom.vdom = newVdom;
+    vdom.vdom.push(newVNode);
 }
 
-let vdom = { vdom: [] };
+let vdom = {  };
 
