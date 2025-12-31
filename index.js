@@ -53,5 +53,5 @@ export function element(nodeName, attributes, ...args) {
     vdom.vdom.push(newVNode);
 }
 
-let vdom = {  };
+let vdom = [];
 
