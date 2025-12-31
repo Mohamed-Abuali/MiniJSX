@@ -45,15 +45,24 @@ function patch($domNode, oldVNode, newVNode) {
         return null;
     }
    
-    if (typeof oldVNode !== typeof newVNode || (typeof newVNode === "number" || typeof newVNode === "string" || typeof newVNode === "boolean") && newVNode !== oldVNode) {
+    // if (typeof oldVNode !== typeof newVNode || (typeof newVNode === "number" || typeof newVNode === "string" || typeof newVNode === "boolean") && newVNode !== oldVNode) {
 
-        const $newNode = render(newVNode);
-        $domNode.replaceWith($newNode);
-        return $newNode;
+    //     const $newNode = render(newVNode);
+    //     $domNode.replaceWith($newNode);
+    //     return $newNode;
+    // }
+    patchChildren(newVNode,oldVNode.children,newVNode.children);
+}
+export function patchChildren(parent,oldChildren,newChildren){
+    const len = Math.max(oldChildren.length,newChildren.length)
+    for(let i = 0 ;i<len;i++){
+        patch(
+            parent,
+            oldChildren[i],
+            newChildren[i]
+        )
     }
 }
-
-
 export function element(nodeName, attributes, ...args) {
     let node = hs(nodeName, attributes, ...args);    
     console.log(vdom);
