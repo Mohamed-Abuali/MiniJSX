@@ -33,6 +33,12 @@ export function render(vnode) {
 }
 
 function patch($domNode, oldVNode, newVNode) {
+    if(!oldVNode){
+        //if there's no old node then create a new one
+        const newNode = render(newVNode)
+        $domNode.appendChild(newNode);
+        return newNode
+    }
    
     if (typeof oldVNode !== typeof newVNode || (typeof newVNode === "number" || typeof newVNode === "string" || typeof newVNode === "boolean") && newVNode !== oldVNode) {
 
