@@ -47,10 +47,10 @@ export function element(nodeName, attributes, ...args) {
     let node = hs(nodeName, attributes, ...args);
    // document.body.appendChild(node);
     vdom.push(node);
-    console.log(vdom.find(node));
+    console.log(vdom);
     const newVNode = patch(document.body, vdom.vdom, node);
-    document.body.appendChild(node);
-    vdom.vdom.push(newVNode);
+    document.body.appendChild(newVNode);
+    vdom.push(newVNode);
 }
 
 let vdom = [];
