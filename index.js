@@ -48,7 +48,7 @@ export function element(nodeName, attributes, ...args) {
    // document.body.appendChild(node);
     vdom.push(node);
     console.log(vdom);
-    const newVNode = patch(document.body, vdom.vdom, node);
+    const newVNode = patch(document.body, vdom, node);
     document.body.appendChild(newVNode);
     vdom.push(newVNode);
 }
