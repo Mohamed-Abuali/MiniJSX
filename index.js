@@ -53,7 +53,7 @@ function patch($domNode, oldVNode, newVNode) {
     // }
     patchChildren(newVNode,oldVNode.children,newVNode.children);
 }
-export function patchChildren(parent,oldChildren,newChildren){
+export function patchChildren(parent,oldChildren = [],newChildren = []){
     const len = Math.max(oldChildren.length,newChildren.length)
     for(let i = 0 ;i<len;i++){
         patch(
