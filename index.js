@@ -39,6 +39,11 @@ function patch($domNode, oldVNode, newVNode) {
         $domNode.appendChild(newNode);
         return newNode
     }
+    if(!newVNode){
+        const removeNode  = oldVNode;
+        $domNode.removeChild(removeNode)
+        return null;
+    }
    
     if (typeof oldVNode !== typeof newVNode || (typeof newVNode === "number" || typeof newVNode === "string" || typeof newVNode === "boolean") && newVNode !== oldVNode) {
 
