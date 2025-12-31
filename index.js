@@ -32,16 +32,19 @@ export function render(vnode) {
     return n;
 }
 
-function patch($domNode, oldVNode, newVNode) {
+
+
+
+function patch(parent, oldVNode, newVNode) {
     if(!oldVNode){
         //if there's no old node then create a new one
         const newNode = render(newVNode)
-        $domNode.appendChild(newNode);
+        parent.appendChild(newNode);
         return newNode
     }
     if(!newVNode){
         const removeNode  = oldVNode;
-        $domNode.removeChild(removeNode)
+        parent.removeChild(removeNode)
         return null;
     }
    
@@ -53,6 +56,10 @@ function patch($domNode, oldVNode, newVNode) {
     // }
     patchChildren(newVNode,oldVNode.children,newVNode.children);
 }
+
+
+
+
 export function patchChildren(parent,oldChildren = [],newChildren = []){
     const len = Math.max(oldChildren.length,newChildren.length)
     for(let i = 0 ;i<len;i++){
@@ -63,6 +70,11 @@ export function patchChildren(parent,oldChildren = [],newChildren = []){
         )
     }
 }
+
+
+
+
+
 export function element(nodeName, attributes, ...args) {
     let node = hs(nodeName, attributes, ...args);    
     console.log(vdom);
