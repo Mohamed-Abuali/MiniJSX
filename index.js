@@ -55,13 +55,10 @@ function patch($domNode, oldVNode, newVNode) {
 
 
 export function element(nodeName, attributes, ...args) {
-    let node = hs(nodeName, attributes, ...args);
-   // document.body.appendChild(node);
-    
+    let node = hs(nodeName, attributes, ...args);    
     console.log(vdom);
     patch(document.body, oldNode, node);
     oldNode = node;
-    //document.body.appendChild(newVNode);
     vdom.push(node);
 }
 
