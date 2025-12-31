@@ -20,6 +20,7 @@ export function render(vnode) {
             // It's an event handler like onClick
             const eventName = k.slice(2).toLowerCase();
             n.addEventListener(eventName, a[k]);
+            
         } else {
             n.setAttribute(k, a[k]);
         }
@@ -43,11 +44,11 @@ function patch($domNode, oldVNode, newVNode) {
 
 
 export function element(nodeName, attributes, ...args) {
-    let dom = render(hs(nodeName, attributes, ...args));
+    let node = render(hs(nodeName, attributes, ...args));
     document.body.appendChild(dom);
-    vdom.vdom.push(dom);
+    // vdom.vdom.push(dom);
     console.log(vdom, document.body);
-    const newVdom = patch(dom, vdom.vdom, document.body);
+    const newVdom = patch(node, vdom.vdom, document.body);
     vdom.vdom = newVdom;
 }
 
