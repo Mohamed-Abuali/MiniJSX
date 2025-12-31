@@ -51,9 +51,9 @@ export function element(nodeName, attributes, ...args) {
     patch(document.body, oldNode, node);
     oldNode = node;
     //document.body.appendChild(newVNode);
-    vdom.push(newVNode);
+    vdom.push(node);
 }
 
 let vdom = [];
-let oldNode = undefined
+let oldNode = undefined;
 
