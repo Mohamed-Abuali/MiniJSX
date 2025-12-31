@@ -34,7 +34,7 @@ export function render(vnode) {
 
 function patch($domNode, oldVNode, newVNode) {
     if(typeof oldVNode === typeof newVNode) return;
-    if (typeof oldVNode !== typeof newVNode || (typeof newVNode === "number" || typeof newVNode === "string" || newVNode === "boolean") && newVNode !== oldVNode) {
+    if (typeof oldVNode !== typeof newVNode || (typeof newVNode === "number" || typeof newVNode === "string" || typeof newVNode === "boolean") && newVNode !== oldVNode) {
 
         const $newNode = render(newVNode);
         $domNode.replaceWith($newNode);
