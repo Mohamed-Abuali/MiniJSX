@@ -40,7 +40,6 @@ function patch($domNode, oldVNode, newVNode) {
         $domNode.replaceWith($newNode);
         return $newNode;
     }
-
 }
 
 
