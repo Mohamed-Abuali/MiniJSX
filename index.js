@@ -33,7 +33,7 @@ export function render(vnode) {
 }
 
 function patch($domNode, oldVNode, newVNode) {
-    if(typeof oldVNode === typeof newVNode) return;
+   
     if (typeof oldVNode !== typeof newVNode || (typeof newVNode === "number" || typeof newVNode === "string" || typeof newVNode === "boolean") && newVNode !== oldVNode) {
 
         const $newNode = render(newVNode);
