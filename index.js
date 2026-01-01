@@ -20,7 +20,7 @@ export function render(vnode) {
         return n;
     }
     let n = document.createElement(vnode.nodeName);
-    
+    vnode.$el = n;
 
     let a = vnode.attributes || {};
     // Object.keys(a).forEach( k => n.setAttribute(k, a[k]));
