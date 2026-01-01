@@ -2,6 +2,14 @@
 /** @jsx hs */
 export function hs(nodeName, attributes, ...args) {
     let children = args.length ? [].concat(...args) : null;
+    if(children){
+        children = children.map(child => {
+            if(typeof child === 'string' || typeof child === 'number'){
+                return {nodeName: '#text', value:String(child)}
+            }
+            return child
+        })
+    }
     return { nodeName, attributes, children };
 }
 
