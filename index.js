@@ -65,6 +65,12 @@ function patch(parent, oldVNode, newVNode) {
         parent.replaceWith($newNode,oldVNode.$el);
         return $newNode;
     }
+    if(oldVNode.nodeName === '#text'){
+        newVNode.$el = oldVNode.$el;
+        return newVNode.$el
+    }
+    const el = oldVNode.$el;
+    newVNode.$el = el;
     patchChildren(newVNode,oldVNode.children,newVNode.children);
 }
 
