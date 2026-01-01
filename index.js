@@ -14,10 +14,13 @@ export function hs(nodeName, attributes, ...args) {
 }
 
 export function render(vnode) {
-    if (vnode.split) return document.createTextNode(vnode);
-
+    if (vnode.nodeName === '#text') {
+        let  n =  document.createTextNode(vnode.value);
+        vnode.$el = n;
+        return n;
+    }
     let n = document.createElement(vnode.nodeName);
-
+    
 
     let a = vnode.attributes || {};
     // Object.keys(a).forEach( k => n.setAttribute(k, a[k]));
