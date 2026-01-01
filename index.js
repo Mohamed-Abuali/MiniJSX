@@ -54,17 +54,17 @@ function patch(parent, oldVNode, newVNode) {
         return newNode
     }
     if(!newVNode){
-        const removeNode  = oldVNode;
+        const removeNode  = oldVNode.$el;
         parent.removeChild(removeNode)
         return null;
     }
    
-    // if (typeof oldVNode !== typeof newVNode || (typeof newVNode === "number" || typeof newVNode === "string" || typeof newVNode === "boolean") && newVNode !== oldVNode) {
+    if (typeof oldVNode.nodeName !== typeof newVNode.nodeName || (typeof oldVNode.$el === "#text" && newVNode.value !== oldVNode.value)) {
 
-    //     const $newNode = render(newVNode);
-    //     $domNode.replaceWith($newNode);
-    //     return $newNode;
-    // }
+        const $newNode = render(newVNode);
+        parent.replaceWith($newNode,oldVNode.$el);
+        return $newNode;
+    }
     patchChildren(newVNode,oldVNode.children,newVNode.children);
 }
 
