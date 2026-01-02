@@ -7,7 +7,7 @@ function handleClick() {
 
 
 
-element("div", null,
+app("div", null,
     hs("div",
         {
             class: "header"

@@ -92,7 +92,7 @@ export function patchChildren(parent,oldChildren = [],newChildren = []){
 
 
 
-export function element(nodeName, attributes, ...args) {
+export function app(nodeName, attributes, ...args) {
     let node = hs(nodeName, attributes, ...args);    
     console.log(vdom);
     patch(document.body, oldNode, node);
