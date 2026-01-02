@@ -1,0 +1,27 @@
+{
+  "name": "jsx-renderer",
+  "version": "1.0.0",
+  "description": "a lightweight JSX renderer",
+  "keywords": [
+    "jsx",
+    "js",
+    "html",
+    "reactmini"
+  ],
+  "homepage": "https://github.com/Mohamed-Abuali/MiniJSX#readme",
+  "bugs": {
+    "url": "https://github.com/Mohamed-Abuali/MiniJSX/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mohamed-Abuali/MiniJSX.git"
+  },
+  "license": "ISC",
+  "author": "MohamedAbuali",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "dev":"dev"
+  }
+}
