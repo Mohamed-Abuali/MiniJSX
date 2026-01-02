@@ -1,5 +1,5 @@
 /** @jsx hs */
-import { element, hs } from "./index.js";
+import { app, hs } from "./index.js";
 
 function handleClick() {
     alert("Clicked");
