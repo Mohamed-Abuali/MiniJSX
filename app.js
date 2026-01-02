@@ -7,31 +7,29 @@ function handleClick() {
 
 
 
-element("div",
-    {
-        class: "header"
-    },
-    hs(
-        "h1",
-        null,
-        "Hello!"
-    ),
-    hs('h3',null,"Welcome to FeatherJSX"),
-)
-
-
-
-element("div",
-    {class:"info-section"},
-    hs('div',
-        {class:"btn-wrapper"},
-        hs('button', { onClick: handleClick }, 'Click Me'),
-        hs('button', null, 'Hello World'),
+element("div", null,
+    hs("div",
+        {
+            class: "header"
+        },
+        hs(
+            "h1",
+            null,
+            "Hello!"
         ),
-    hs('p', null, 'This is a paragraph'),
-  
-)
+        hs('h3', null, "Welcome to FeatherJSX"),
+    ),
+    hs("div",
+        { class: "info-section" },
+        hs('div',
+            { class: "btn-wrapper" },
+            hs('button', { onClick: handleClick }, 'Click Me'),
+            hs('button', null, 'Hello World'),
+        ),
+        hs('p', null, 'This is a paragraph'),
 
+    )
+)
 
 
 
