@@ -59,7 +59,7 @@ function patch(parent, oldVNode, newVNode) {
         return null;
     }
    
-    if (typeof oldVNode.nodeName !== typeof newVNode.nodeName || (typeof oldVNode.$el === "#text" && newVNode.value !== oldVNode.value)) {
+    if ( oldVNode.nodeName !==  newVNode.nodeName || ( oldVNode.$el === "#text" && newVNode.value !== oldVNode.value)) {
 
         const $newNode = render(newVNode);
         parent.replaceChild($newNode,oldVNode.$el);
