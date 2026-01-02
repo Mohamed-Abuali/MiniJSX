@@ -1,5 +1,6 @@
 /** @jsx hs */
 import { app, hs } from "./index.js";
+import { helloWorld } from "./components/button.js";
 
 function handleClick() {
     alert("Clicked");
@@ -24,7 +25,7 @@ app("div", null,
         hs('div',
             { class: "btn-wrapper" },
             hs('button', { onClick: handleClick }, 'Click Me'),
-            hs('button', null, 'Hello World'),
+            helloWorld(),
         ),
         hs('p', null, 'This is a paragraph'),
 
