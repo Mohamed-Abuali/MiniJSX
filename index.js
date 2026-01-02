@@ -14,6 +14,7 @@ export function hs(nodeName, attributes, ...args) {
 }
 
 export function render(vnode) {
+    if(!vnode) return;
     if (vnode.nodeName === '#text') {
         let  n =  document.createTextNode(vnode.value);
         vnode.$el = n;
@@ -47,6 +48,7 @@ export function render(vnode) {
 
 
 function patch(parent, oldVNode, newVNode) {
+    
     if(!oldVNode){
         //if there's no old node then create a new one
         const newNode = render(newVNode)
@@ -59,7 +61,7 @@ function patch(parent, oldVNode, newVNode) {
         return null;
     }
    
-    if ( oldVNode.nodeName !==  newVNode.nodeName || ( oldVNode.$el === "#text" && newVNode.value !== oldVNode.value)) {
+    if ( oldVNode.nodeName !==  newVNode.nodeName || ( oldVNode.nodeName === "#text" && newVNode.value !== oldVNode.value)) {
 
         const $newNode = render(newVNode);
         parent.replaceChild($newNode,oldVNode.$el);
