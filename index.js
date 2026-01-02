@@ -62,7 +62,7 @@ function patch(parent, oldVNode, newVNode) {
     if (typeof oldVNode.nodeName !== typeof newVNode.nodeName || (typeof oldVNode.$el === "#text" && newVNode.value !== oldVNode.value)) {
 
         const $newNode = render(newVNode);
-        parent.replaceWith($newNode,oldVNode.$el);
+        parent.replaceChild($newNode,oldVNode.$el);
         return $newNode;
     }
     if(oldVNode.nodeName === '#text'){
@@ -71,7 +71,7 @@ function patch(parent, oldVNode, newVNode) {
     }
     const el = oldVNode.$el;
     newVNode.$el = el;
-    patchChildren(newVNode,oldVNode.children,newVNode.children);
+    patchChildren(el,oldVNode.children,newVNode.children);
 }
 
 
