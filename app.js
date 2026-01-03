@@ -27,7 +27,7 @@ app("div", null,
             hs('button', { onClick: handleClick }, 'Click Me'),
             helloWorld(),
         ),
-        hs('p', null, 'This is a paragraph'),
+        hs('p', {style:{color:'red'}}, 'This is a paragraph'),
 
     )
 )

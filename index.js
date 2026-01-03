@@ -25,7 +25,7 @@ export function render(vnode) {
 
     let a = vnode.attributes || {};
     // Object.keys(a).forEach( k => n.setAttribute(k, a[k]));
-
+    console.log(a)
     // adding an eventlistener "onClick" like React
     Object.keys(a).forEach((k) => {
         if (k.startsWith("on") && typeof a[k] === "function") {
@@ -33,7 +33,10 @@ export function render(vnode) {
             const eventName = k.slice(2).toLowerCase();
             n.addEventListener(eventName, a[k]);
             
-        } else {
+        }else if(k.startsWith("style") && typeof a[k] === "style"){
+
+            console.log("styeling")
+        }else {
             n.setAttribute(k, a[k]);
         }
     });
@@ -95,7 +98,8 @@ export function patchChildren(parent,oldChildren = [],newChildren = []){
 
 
 export function app(nodeName, attributes, ...args) {
-    let node = hs(nodeName, attributes, ...args);    
+    let node = hs(nodeName, attributes, ...args);  
+    console.log(node.attributes)  
     console.log(vdom);
     patch(document.body, oldNode, node);
     oldNode = node;
