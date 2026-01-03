@@ -33,9 +33,10 @@ export function render(vnode) {
             const eventName = k.slice(2).toLowerCase();
             n.addEventListener(eventName, a[k]);
             
-        }else if(k.startsWith("style") && typeof a[k] === "style"){
-
-            console.log("styeling")
+        }else if(k.startsWith("st") ){
+            const style = a[k]
+            n.style.color = style.color
+            console.log("styeling",a[k])
         }else {
             n.setAttribute(k, a[k]);
         }
