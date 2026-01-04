@@ -2,6 +2,9 @@
 /** @jsx hs */
 export function hs(nodeName, attributes, ...args) {
     let children = args.length ? [].concat(...args) : null;
+    if(typeof nodeName === 'function'){
+        return nodeName(attributes,children)
+    }
     if(children){
         children = children.map(child => {
             if(typeof child === 'string' || typeof child === 'number'){
@@ -102,29 +105,40 @@ export function useState(initialValue){
     }
     const setState = (newValue) => {
         hooks[currentHookIndex] = newValue;
-        
+        renderApp()
     }
     hookIndex++;
     return [hooks[currentHookIndex],setState]
 
 }
 
-
+let rootComponent = null;
+let rootAttributes = null;
+let rootArgs = null;
 
 export function app(nodeName, attributes, ...args) {
-    let node = hs(nodeName, attributes, ...args);  
+    //let node = hs(nodeName, attributes, ...args);  
     console.log(node.attributes)  
     console.log(vdom);
-    patch(document.body, oldNode, node);
-    oldNode = node;
-    vdom.push(node);
+    rootComponent = nodeName;
+    rootAttributes = attributes;
+    rootArgs = args;
+    renderApp()
 }
 
 let vdom = [];
 let oldNode = undefined;
 
 function renderApp(){
-    
+    hookIndex = 0;
+    if(typeof rootComponent === 'function'){
+        node = rootComponent(rootAttributes,...rootArgs)
+    }else {
+        node = hs(rootComponent,rootAttributes,...rootArgs)
+    }
+    patch(document.body, oldNode, node);
+    oldNode = node;
+    vdom.push(node);
 }
 
 
