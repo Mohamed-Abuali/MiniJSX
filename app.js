@@ -29,7 +29,8 @@ function Counter(){
             helloWorld(),
         ),
     ),
-        hs("h1",{class:"counter"},count),
+        hs('h1',null,"Counter App"),
+        hs("p",{class:"counter"},count),
         hs('div',{class:'btn-wrapper'},
             hs('button',{onClick: () => setCount(count ++)} , '+'),
             hs('button',{onClick:() => setCount(count --)}, '-')
