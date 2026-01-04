@@ -93,7 +93,21 @@ export function patchChildren(parent,oldChildren = [],newChildren = []){
     }
 }
 
+let hooks = [];
+let hookIndex = 0;
+export function useState(initialValue){
+    let currentHookIndex = hookIndex;
+    if(hooks[currentHookIndex] === undefined){
+        hooks[currentHookIndex] = initialValue;
+    }
+    const setState = (newValue) => {
+        hooks[currentHookIndex] = newValue;
+        
+    }
+    hookIndex++;
+    return [hooks[currentHookIndex],setState]
 
+}
 
 
 
@@ -109,9 +123,10 @@ export function app(nodeName, attributes, ...args) {
 let vdom = [];
 let oldNode = undefined;
 
-
-
-export function useState(value,func){
+function renderApp(){
     
 }
+
+
+
 
