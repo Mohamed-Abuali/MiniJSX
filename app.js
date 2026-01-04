@@ -1,11 +1,14 @@
 /** @jsx hs */
-import { app, hs } from "./index.js";
+import { app, hs , useState} from "./index.js";
 import { helloWorld } from "./components/button.js";
+
 
 function handleClick() {
     alert("Clicked");
 }
-
+function Counter(){
+    const [count, setCount] = useState
+}
 
 
 app("div", null,
