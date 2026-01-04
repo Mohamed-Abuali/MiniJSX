@@ -118,8 +118,7 @@ let rootArgs = null;
 
 export function app(nodeName, attributes, ...args) {
     //let node = hs(nodeName, attributes, ...args);  
-    console.log(node.attributes)  
-    console.log(vdom);
+
     rootComponent = nodeName;
     rootAttributes = attributes;
     rootArgs = args;
@@ -131,6 +130,7 @@ let oldNode = undefined;
 
 function renderApp(){
     hookIndex = 0;
+    let node;
     if(typeof rootComponent === 'function'){
         node = rootComponent(rootAttributes,...rootArgs)
     }else {
