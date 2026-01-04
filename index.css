@@ -4,6 +4,7 @@
 }
 
 body {
+    font-family: 'Courier New', Courier, monospace;
     background-color: var(--bg-color);
     width: 100vw;
     height: 100vh;
@@ -61,4 +62,8 @@ button{
      justify-content: center;
     align-items: center;
     gap:10px
+}
+.counter{
+    font-size: medium;
+    font-weight: 500;
 }
