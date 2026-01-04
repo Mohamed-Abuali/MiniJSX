@@ -8,7 +8,13 @@ function handleClick() {
 }
 function Counter(){
     const [count, setCount] = useState(0)
-    
+    return hs('div',{ class:"container"},
+        hs("h1",{class:"counter"},count),
+        hs('div',{class:'btn-wrapper'},
+            hs('button',{onClick: () => setCount(count + 1)} , '+'),
+            hs('button',{onClick:() => setCount(count - 1)}, '-')
+        )
+    )
 }
 
 app("div", null,
