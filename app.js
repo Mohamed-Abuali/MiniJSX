@@ -9,16 +9,7 @@ function handleClick() {
 function Counter(){
     const [count, setCount] = useState(0)
     return hs('div',{ class:"container"},
-        hs("h1",{class:"counter"},count),
-        hs('div',{class:'btn-wrapper'},
-            hs('button',{onClick: () => setCount(count + 1)} , '+'),
-            hs('button',{onClick:() => setCount(count - 1)}, '-')
-        )
-    )
-}
-
-app("div", null,
-    hs("div",
+            hs("div",
         {
             class: "header"
         },
@@ -28,7 +19,7 @@ app("div", null,
             "Hello!"
         ),
         hs('h3', null, "Welcome to FeatherJSX"),
-        Counter,
+        
     ),
     hs("div",
         { class: "info-section" },
@@ -37,10 +28,16 @@ app("div", null,
             hs('button', { onClick: handleClick }, 'Click Me'),
             helloWorld(),
         ),
-        hs('p', {style:{color:'red',marginTop:'50px'}}, 'This is a paragraph'),
-
+    ),
+        hs("h1",{class:"counter"},count),
+        hs('div',{class:'btn-wrapper'},
+            hs('button',{onClick: () => setCount(count + 1)} , '+'),
+            hs('button',{onClick:() => setCount(count - 1)}, '-')
+        )
     )
-)
+}
+
+app(Counter)
 
 
 
