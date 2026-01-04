@@ -28,6 +28,7 @@ app("div", null,
             "Hello!"
         ),
         hs('h3', null, "Welcome to FeatherJSX"),
+        Counter,
     ),
     hs("div",
         { class: "info-section" },
