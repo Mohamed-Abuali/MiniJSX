@@ -7,7 +7,7 @@ function handleClick() {
     alert("Clicked");
 }
 function Counter(){
-    const [count, setCount] = useState(0)
+    let [count, setCount] = useState(0)
     return hs('div',{ class:"container"},
             hs("div",
         {
@@ -31,8 +31,8 @@ function Counter(){
     ),
         hs("h1",{class:"counter"},count),
         hs('div',{class:'btn-wrapper'},
-            hs('button',{onClick: () => setCount(count + 1)} , '+'),
-            hs('button',{onClick:() => setCount(count - 1)}, '-')
+            hs('button',{onClick: () => setCount(count ++)} , '+'),
+            hs('button',{onClick:() => setCount(count --)}, '-')
         )
     )
 }
