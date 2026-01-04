@@ -7,9 +7,9 @@ function handleClick() {
     alert("Clicked");
 }
 function Counter(){
-    const [count, setCount] = useState
+    const [count, setCount] = useState(0)
+    
 }
-
 
 app("div", null,
     hs("div",
