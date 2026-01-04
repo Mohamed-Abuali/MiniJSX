@@ -109,3 +109,9 @@ export function app(nodeName, attributes, ...args) {
 let vdom = [];
 let oldNode = undefined;
 
+
+
+export function useState(value,func){
+    
+}
+
