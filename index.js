@@ -101,7 +101,8 @@ export function patchChildren(parent,oldChildren = [],newChildren = []){
 
             const {child: oldChild} = oldKeysMap[newKey]
             patch(parent,oldChild,newChild)
-            
+            if(oldChild.$el !== parent.childNodes[i])
+
         }else{
 
             patch(
