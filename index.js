@@ -89,12 +89,15 @@ export function patchChildren(parent,oldChildren = [],newChildren = []){
     const len = Math.max(oldChildren.length,newChildren.length)
     const oldKeysMap = {}
     oldChildren.forEach((child,index) => {
-        const key = child.attributes.key;
+        const key = child.attributes && child.attributes.key;
         if(key !== undefined) {
             oldKeysMap[key] = {child,index}
         }
     })
     for(let i = 0 ;i<len;i++){
+        const newChild = newChildren[i]
+        const newKey = newChild.attributes && newChild.attributes.key;
+        
         patch(
             parent,
             oldChildren[i],
