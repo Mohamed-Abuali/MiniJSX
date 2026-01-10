@@ -88,12 +88,15 @@ function patch(parent, oldVNode, newVNode) {
 export function patchChildren(parent,oldChildren = [],newChildren = []){
     const len = Math.max(oldChildren.length,newChildren.length)
     for(let i = 0 ;i<len;i++){
+        if(oldChildren[i].attributes.keys === newChildren[i].attributes.keys) {
         patch(
             parent,
             oldChildren[i],
             newChildren[i]
         )
     }
+    }
+    
 }
 
 let hooks = [];
