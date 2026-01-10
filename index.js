@@ -97,12 +97,19 @@ export function patchChildren(parent,oldChildren = [],newChildren = []){
     for(let i = 0 ;i<len;i++){
         const newChild = newChildren[i]
         const newKey = newChild.attributes && newChild.attributes.key;
-        
-        patch(
-            parent,
-            oldChildren[i],
-            newChildren[i]
-        )
+        if(newKey !== undefined && oldKeysMap[newKey]){
+
+            const {child: oldChild} = oldKeysMap[newKey]
+            patch(parent,oldChild,newChild)
+            
+        }else{
+
+            patch(
+                parent,
+                oldChildren[i],
+                newChildren[i]
+            )
+    }
     }
 }
 
