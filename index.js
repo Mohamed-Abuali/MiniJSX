@@ -87,7 +87,13 @@ function patch(parent, oldVNode, newVNode) {
 
 export function patchChildren(parent,oldChildren = [],newChildren = []){
     const len = Math.max(oldChildren.length,newChildren.length)
-    
+    const oldKeysMap = {}
+    oldChildren.forEach((child,index) => {
+        const key = child.attributes.key;
+        if(key !== undefined) {
+            oldKeysMap[key] = {child,index}
+        }
+    })
     for(let i = 0 ;i<len;i++){
         patch(
             parent,
