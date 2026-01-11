@@ -94,14 +94,16 @@ export function patchChildren(parent,oldChildren = [],newChildren = []){
             oldKeysMap[key] = {child,index}
         }
     })
-    for(let i = 0 ;i<len;i++){
+    for(let i = 0 ;i<newChildren.length;i++){
         const newChild = newChildren[i]
         const newKey = newChild.attributes && newChild.attributes.key;
         if(newKey !== undefined && oldKeysMap[newKey]){
 
             const {child: oldChild} = oldKeysMap[newKey]
             patch(parent,oldChild,newChild)
-            if(oldChild.$el !== parent.childNodes[i])
+            if(oldChild.$el !== parent.childNodes[i]){
+                parent.insertBefore(oldChild.$el , parent.childNodes[i])
+            }
 
         }else{
 
@@ -112,6 +114,8 @@ export function patchChildren(parent,oldChildren = [],newChildren = []){
             )
     }
     }
+
+
 }
 
 let hooks = [];
