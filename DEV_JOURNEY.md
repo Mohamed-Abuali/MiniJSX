@@ -58,6 +58,12 @@ This document chronicles the 13-week journey (update(Jun/10/2026)) of building a
 *   **Problem:** `hs` didn't know what to do with `app(Counter)`.
 *   **Solution:** Updated `hs` to check if `nodeName` is a function and execute it to resolve the VNode.
 
+### Keyed Reconciliation (List Optimization)
+*   **Problem:** Lists were updating inefficiently or incorrectly when items were reordered, as the diff algorithm only checked indexes.
+*   **Solution:** Implemented a key-based diffing strategy in `patchChildren`.
+    *   **Logic:** Created a map of old children by their `key`.
+    *   **Result:** When iterating new children, we now look up the key in the map and reuse/move the existing DOM node instead of destroying and recreating it.
+
 ---
 
 *This project has evolved from a simple DOM creator to a stateful, reactive renderer capable of handling functional components and hooks.*
