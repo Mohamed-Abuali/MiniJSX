@@ -114,6 +114,13 @@ export function patchChildren(parent,oldChildren = [],newChildren = []){
             )
     }
     }
+    if(oldChildren.length > newChildren.length){
+        for(let i = newChildren.length; i < oldChildren.length;i++){
+            if(oldChildren[i] && oldChildren[i].$el){
+                parent.removeChild(oldChildren[i].$el)
+            }
+        }
+    }
 
 
 }
