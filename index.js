@@ -19,8 +19,8 @@ export function hs(nodeName, attributes, ...args) {
 document.addEventListener("click",(event) => {
     const target = event.target;
     while(target && target !== document){
-    if(target._event && target._event.click){
-        target._event.click(e)
+    if(target._events && target._events.click){
+        target._events.click(e)
         return
     }
 }
@@ -45,7 +45,8 @@ export function render(vnode) {
         if (k.startsWith("on") && typeof a[k] === "function") {
             // It's an event handler like onClick
             const eventName = k.slice(2).toLowerCase();
-            n._event[eventName] =  a[k];
+            n._events = n._events || {};
+            n._events[eventName] =  a[k];
             
         }else if(k.startsWith("st") ){
             const style = a[k]
