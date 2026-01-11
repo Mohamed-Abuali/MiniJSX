@@ -64,6 +64,11 @@ This document chronicles the 13-week journey (update(Jun/10/2026)) of building a
     *   **Logic:** Created a map of old children by their `key`.
     *   **Result:** When iterating new children, we now look up the key in the map and reuse/move the existing DOM node instead of destroying and recreating it.
 
+### Event Delegation
+*   **Problem:** Attaching an event listener (like `onclick`) to every single element is memory-intensive and slow for large lists.
+*   **Solution:** Implemented **Event Delegation** by attaching a single global listener to the `document`.
+    *   **Logic:** Events "bubble up" from the target element. We store handlers on the DOM node (`_events` property) and use the global listener to find and execute the correct handler by walking up the DOM tree.
+
 ---
 
 *This project has evolved from a simple DOM creator to a stateful, reactive renderer capable of handling functional components and hooks.*
