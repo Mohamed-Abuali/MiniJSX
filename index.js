@@ -16,6 +16,13 @@ export function hs(nodeName, attributes, ...args) {
     return { nodeName, attributes, children };
 }
 
+document.addEventListener("click",(event) => {
+    const target = event.target;
+    if(target._event && target._event.click){
+        target._event.click(e)
+    }
+})
+
 export function render(vnode) {
     if(!vnode) return;
     if (vnode.nodeName === '#text') {
